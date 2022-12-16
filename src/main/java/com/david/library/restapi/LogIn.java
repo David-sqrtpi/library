@@ -21,6 +21,7 @@ public class LogIn {
         Optional<User> user = userRepository.findByEmail(intent.getEmail());
 
         if (user.isPresent() && user.get().getPassword().equals(intent.getPassword())){
+            user.get().getReserves().clear();
             return user.get();
         }
 
